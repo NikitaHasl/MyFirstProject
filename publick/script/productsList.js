@@ -6,7 +6,12 @@ Vue.component('productsList', {
             imgCatalog: 'https://placehold.it/200x150',
         }
     },
-    methods: {},
+    methods: {
+        filter(value) {
+            let regExp = new RegExp(value, 'i');
+            this.filtered = this.products.filter(element => regExp.test(element.product_name));
+        }
+    },
     template: `<div class="products">
                     <product ref="product" v-for="item of filtered" :key="item.id_product" :img="imgCatalog" :product="item"></product>
                 </div>`,

@@ -44,7 +44,7 @@ app.get('/api/cart', (req, res) => {
 
 // Добавление нового товара в корзине
 app.post('/api/cart', (req, res) => {
-    fs.readFile('./server/db/userCart.json', 'utf-8', (err, data) => {
+    fs.readFile('./server/db/cartUser.json', 'utf-8', (err, data) => {
         if (err) {
             res.sendStatus(404, JSON.stringify({
                 result: 0,
@@ -54,9 +54,9 @@ app.post('/api/cart', (req, res) => {
             // парсим текущую корзину
             const cart = JSON.parse(data);
             // добавляем новый товар
-            cart.contents.push(req.body);
+            cart.push(req.body);
             // пишем обратно
-            fs.writeFile('./server/db/userCart.json', JSON.stringify(cart), (err) => {
+            fs.writeFile('./server/db/cartUser.json', JSON.stringify(cart), (err) => {
                 if (err) {
                     res.send('{"result": 0}');
                 } else {
@@ -69,7 +69,7 @@ app.post('/api/cart', (req, res) => {
 
 // Изменяем количество товара
 app.put('/api/cart/:id', (req, res) => { // /api/cart/56264
-    fs.readFile('./server/db/userCart.json', 'utf-8', (err, data) => {
+    fs.readFile('./server/db/cartUser.json', 'utf-8', (err, data) => {
         if (err) {
             res.sendStatus(404, JSON.stringify({
                 result: 0,
@@ -79,11 +79,11 @@ app.put('/api/cart/:id', (req, res) => { // /api/cart/56264
             // парсим текущую корзину
             const cart = JSON.parse(data);
             // ищем товар по id
-            const find = cart.contents.find(el => el.id_product === +req.params.id);
+            const find = cart.find(el => el.id_product === +req.params.id);
             // изменяем количество
             find.quantity += req.body.quantity;
             // пишем обратно
-            fs.writeFile('./server/db/userCart.json', JSON.stringify(cart), (err) => {
+            fs.writeFile('./server/db/cartUser.json', JSON.stringify(cart), (err) => {
                 if (err) {
                     res.send('{"result": 0}');
                 } else {
@@ -96,17 +96,17 @@ app.put('/api/cart/:id', (req, res) => { // /api/cart/56264
 
 //Удаление товара из корзины
 app.delete(`/api/cart/:id`, (req, res) => {
-    fs.readFile('./server/db/userCart.json', 'utf-8', (error, data) => {
+    fs.readFile('./server/db/cartUser.json', 'utf-8', (error, data) => {
         if (error) {
             res.sendStatus(404, JSON.stringify({
                 result: 0,
-                text: err
+                text: error
             }));
         } else {
             const cart = JSON.parse(data); //парсим корзину
-            const item = cart.contents.find(el => el.id_product === +req.params.id);
-            cart.contents.splice(cart.contents.indexOf(item), 1); //удаляем элемент из массива
-            fs.writeFile('./server/db/userCart.json', JSON.stringify(cart), (err) => {
+            const item = cart.find(el => el.id_product === +req.params.id);
+            cart.splice(cart.indexOf(item), 1); //удаляем элемент из массива
+            fs.writeFile('./server/db/cartUser.json', JSON.stringify(cart), (err) => {
                 if (err) {
                     res.send('{"result": 0}');
                 } else {
