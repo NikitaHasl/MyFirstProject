@@ -6,7 +6,7 @@ const app = express();
  * Активируем мидлвары
  */
 app.use(express.json()); // Даем знать приложению, что работаем с json'ом
-app.use('/', express.static('./')); // запросы в корень нашего сайт отдают содержимое public
+app.use('/', express.static('./publick')); // запросы в корень нашего сайт отдают содержимое public
 
 /**
  * 
