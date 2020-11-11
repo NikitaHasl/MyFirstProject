@@ -1,10 +1,5 @@
 Vue.component('product', {
     props: ['img', 'product'],
-    data() {
-        return {
-
-        }
-    },
     template: `<div class="product-item">
                     <img :src="img" alt="Some img">
                     <div class='desc'>

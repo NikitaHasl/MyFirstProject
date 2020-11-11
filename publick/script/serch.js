@@ -1,7 +1,7 @@
 Vue.component('serch', {
     data() {
         return {
-            userSearch: ''
+            userSearch: '' //Значение привязано к полю ввода в поисковой форме
         }
     },
     template: `

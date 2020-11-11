@@ -1,15 +1,19 @@
 Vue.component('cart', {
     data() {
         return {
-            showCart: false,
-            cartItems: [],
-            imgCart: 'https://placehold.it/50x100',
+            showCart: false, //Свойство отвечает за показ корзины
+            cartItems: [], //Массив, содержащий продукты корзины
+            imgCart: 'https://placehold.it/50x100', //Заглушка картинки
         }
     },
     methods: {
+        /**
+         * Метод добавляет продукт в корзину.
+         * @param {object} product Продукт, который нужно добавить в корзину.
+         */
         addProduct(product) {
-            let find = this.cartItems.find(element => element.id_product === product.id_product);
-            if (find) {
+            let find = this.cartItems.find(element => element.id_product === product.id_product); //Ищем продукт который хотим добавить в корзине.
+            if (find) { //Если такой продукт уже есть в корзине то увеличиваем кол-во на +1.
                 this.$parent.putJson(`/api/cart/${find.id_product}`, {
                     quantity: 1
                 }).then(data => {
@@ -18,7 +22,7 @@ Vue.component('cart', {
                     }
                 });
 
-            } else {
+            } else { //Если продукта в корзине еще нет, то создаем новый объект, содержащий новое сво-во quantity и старый объект, после чего добавляем в корзину.
                 let newProduct = Object.assign({
                     quantity: 1
                 }, product);
@@ -31,8 +35,12 @@ Vue.component('cart', {
 
             }
         },
+        /**
+         * Метод удаляет продукт из корзины.
+         * @param {object} product Продукт, который нужно удалить из корзины.
+         */
         removeProduct(product) {
-            if (product.quantity > 1) {
+            if (product.quantity > 1) { //Если кол-во продукта больше 1, то просто уменьшаем кол-во продукта на 1.
                 this.$parent.putJson(`/api/cart/${product.id_product}`, {
                     quantity: -1
                 }).then(data => {
@@ -41,7 +49,7 @@ Vue.component('cart', {
                     }
                 });
 
-            } else {
+            } else { //Если кол-во продукта = 1, то удаляем его из корзины.
                 this.$parent.deleteJson(`/api/cart/${product.id_product}`, product)
                     .then(data => {
                         if (data.result === 1) {
@@ -55,7 +63,7 @@ Vue.component('cart', {
         this.$parent.getJson('/api/cart')
             .then(data => {
                 for (let element of data) {
-                    this.cartItems.push(element);
+                    this.cartItems.push(element); //Заполняем массив элементами корзины.
                 }
             });
     },
