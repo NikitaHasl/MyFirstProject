@@ -30,7 +30,7 @@ app.get('/api/products', (req, res) => {
  * API Корзины
  */
 app.get('/api/cart', (req, res) => {
-    fs.readFile('./server/db/userCart.json', 'utf-8', (err, data) => {
+    fs.readFile('./server/db/cartUser.json', 'utf-8', (err, data) => {
         if (err) {
             res.sendStatus(404, JSON.stringify({
                 result: 0,
