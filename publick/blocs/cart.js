@@ -6,6 +6,12 @@ Vue.component('cart', {
             imgCart: 'https://placehold.it/50x100', //Заглушка картинки
         }
     },
+    computed: {
+        total() {
+            let result = this.cartItems.reduce((sum, item) => sum + (item.quantity * item.price), 0);
+            return result
+        },
+    },
     methods: {
         /**
          * Метод добавляет продукт в корзину.
@@ -57,7 +63,10 @@ Vue.component('cart', {
                         }
                     })
             }
-        }
+        },
+        changeCurent(state) {
+            this.$parent.state = state
+        },
     },
     mounted() {
         this.$parent.getJson('/api/cart')
@@ -71,13 +80,17 @@ Vue.component('cart', {
             <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
             <div class="cart-block" v-show="showCart">
                 <p v-if="!cartItems.length">Корзина пуста</p>
-                <cart-item class="cart-item" 
-                v-for="item of cartItems" 
-                :key="item.id_product"
-                :cart-item="item" 
-                :img="imgCart"
-                @remove="removeProduct">
-                </cart-item>
+                <div v-else>
+                    <cart-item class="cart-item" 
+                    v-for="item of cartItems" 
+                    :key="item.id_product"
+                    :cart-item="item" 
+                    :img="imgCart"
+                    @remove="removeProduct">
+                    </cart-item>
+                    <button class="buy-btn" type="button" @click="changeCurent('cartList')">Перейти в корзину</button>
+                </div>
+                
             </div>
         </div>`
 

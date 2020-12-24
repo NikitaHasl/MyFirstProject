@@ -1,5 +1,8 @@
 const app = new Vue({
     el: '#app',
+    data: {
+        state: 'productsList',
+    },
     methods: {
         getJson(url) {
             return fetch(url)

@@ -17,7 +17,7 @@ Vue.component('productsList', {
             this.filtered = this.products.filter(element => regExp.test(element.product_name)); //С помощью метода filter, находим в массиве products элементы, у которых значение product_name содержит нашу регулярку, затем записываем все найденые продукты в массив filtered.
         }
     },
-    template: `<div class="products">
+    template: `<div class="products" ref='productsList'>
                     <product ref="product" v-for="item of filtered" :key="item.id_product" :img="imgCatalog" :product="item"></product>
                 </div>`,
     mounted() {
