@@ -15,10 +15,17 @@ Vue.component('productsList', {
         filter(value) {
             let regExp = new RegExp(value, 'i'); //Создаем регулярку, флаг i убирает регистрозависимость.
             this.filtered = this.products.filter(element => regExp.test(element.product_name)); //С помощью метода filter, находим в массиве products элементы, у которых значение product_name содержит нашу регулярку, затем записываем все найденые продукты в массив filtered.
-        }
+        },
+        productPage(id) {
+            let find = this.$parent.products.find(element => element.id_product === id);
+            console.log(find);
+            this.$parent.product = find;
+            this.$parent.state = "singleProduct";
+
+        },
     },
     template: `<div class="products" ref='productsList'>
-                    <product ref="product" v-for="item of filtered" :key="item.id_product" :img="imgCatalog" :product="item"></product>
+                    <product ref="product" v-for="item of filtered" :key="item.id_product" :img="imgCatalog" :product="item" @singleProduct="productPage"></product>
                 </div>`,
     mounted() {
         this.$parent.getJson('/api/products')
@@ -29,5 +36,4 @@ Vue.component('productsList', {
                 }
             });
     },
-
 })

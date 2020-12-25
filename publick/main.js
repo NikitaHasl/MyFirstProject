@@ -2,6 +2,8 @@ const app = new Vue({
     el: '#app',
     data: {
         state: 'productsList',
+        products: [],
+        product: {},
     },
     methods: {
         getJson(url) {
@@ -47,5 +49,13 @@ const app = new Vue({
                     console.log(error);
                 });
         },
+    },
+    mounted() {
+        this.getJson('/api/products')
+            .then(data => {
+                for (let element of data) {
+                    this.products.push(element); //Заполняем массивы элементами перед загрузкой страницы
+                }
+            });
     },
 })

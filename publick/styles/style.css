@@ -4,7 +4,7 @@ body {
 
 main,
 .main {
-    min-height: calc(100vh - 158px);
+    min-height: calc(100vh - 178px);
 }
 
 header,

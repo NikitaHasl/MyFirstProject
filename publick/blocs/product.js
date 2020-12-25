@@ -1,11 +1,11 @@
 Vue.component('product', {
     props: ['img', 'product'],
-    template: `<div class="product-item">
+    template: `<div class="product-item" @click="$emit('singleProduct', product.id_product)">
                     <img :src="img" alt="Some img">
                     <div class='desc'>
                     <h3>{{product.product_name}}</h3>
                     <p>{{product.price}}₽</p>
-                    <button class="buy-btn" @click="$root.$refs.cart.addProduct(product)">Купить</button>
+                    <button class="buy-btn" @click.stop="$root.$refs.cart.addProduct(product)">Купить</button>
                     </div>
                 </div>`
 });

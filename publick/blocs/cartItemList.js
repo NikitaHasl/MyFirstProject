@@ -1,7 +1,7 @@
 Vue.component('cart-itemlist', {
     props: ['cartItem', 'img', 'description'],
     template: `
-                <div class="cart-item">
+            <div class="cart-item">
                 <div class="product-bio">
                     <img :src="img" alt="Some image">
                     <div class="cart-product-desc">
