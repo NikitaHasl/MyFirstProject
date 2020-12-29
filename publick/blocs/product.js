@@ -5,7 +5,7 @@ Vue.component('product', {
                     <div class='desc'>
                     <h3>{{product.product_name}}</h3>
                     <p>{{product.price}}₽</p>
-                    <button class="buy-btn" @click.stop="$root.$refs.cart.addProduct(product)">Купить</button>
+                    <button class="mini-btn-cart" @click.stop="$root.$refs.cart.addProduct(product)">В корзину</button>
                     </div>
                 </div>`
 });

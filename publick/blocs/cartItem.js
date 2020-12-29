@@ -1,7 +1,7 @@
 Vue.component('cart-item', {
     props: ['cartItem', 'img', ],
     template: `
-                <div class="cart-item">
+                <div>
                 <div class="product-bio">
                     <img :src="img" alt="Some image">
                     <div class="product-desc">
@@ -12,7 +12,7 @@ Vue.component('cart-item', {
                 </div>
                 <div class="right-block">
                     <p class="product-price">{{cartItem.quantity*cartItem.price}}₽</p>
-                    <button class="del-btn" @click="$emit('remove', cartItem)">-</button>
+                    <button class="mini-btn-cart" @click="$emit('remove', cartItem)">-</button>
                 </div>
             </div>
     `

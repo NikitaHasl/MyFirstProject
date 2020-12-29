@@ -1,9 +1,9 @@
 const app = new Vue({
     el: '#app',
     data: {
-        state: 'productsList',
-        products: [],
-        product: {},
+        state: 'catalog', // Отвечает за показ нужной страницы
+        products: [], // Массив продуктов каталога
+        findProduct: {}, // Хранит нужный продукт, который нкжно показать на странице описания продукта
     },
     methods: {
         getJson(url) {
@@ -48,6 +48,13 @@ const app = new Vue({
                 .catch(error => {
                     console.log(error);
                 });
+        },
+        /**
+         * Метод переключает страницы(каталог, корзина, описание товара)
+         * @param {string} page 
+         */
+        changeCurentPage(page) {
+            this.state = page
         },
     },
     mounted() {

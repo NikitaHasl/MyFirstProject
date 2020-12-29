@@ -5,7 +5,7 @@ Vue.component('serch', {
         }
     },
     template: `
-            <form action="#" class="search-form" @submit.prevent="$parent.$children[2].filter(userSearch)" v-show="$parent.state === 'productsList'">
+            <form action="#" class="search-form" @submit.prevent="$root.$refs.main.filter(userSearch)" v-show="$parent.state === 'catalog'">
                 <input type="text" class="search-field" v-model="userSearch">
                 <button class="btn-search" type="submit">
                     <i class="fas fa-search"></i>

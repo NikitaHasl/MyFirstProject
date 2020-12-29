@@ -22,5 +22,47 @@
     "product_name": "Mouse",
     "price": 1000,
     "description": "A computer mouse is an input device that is used with a computer. Moving a mouse along a flat surface can move the cursor to different items on the screen. ... A computer mouse is a handheld hardware input device that controls a cursor in a GUI and can move and select text, icons, files, and folders."
+  },
+  {
+    "id_product": 566,
+    "product_name": "PC",
+    "price": 52000,
+    "description": "PC characteristics. Polycarbonate (Polycarbonate or PC, PC) is a linear polyester of carbonic acid H2CO3 and aromatic alcohol. It belongs to the group of amorphous thermoplastics, the common external feature of which is high transparency. During injection molding, the material remains amorphous."
+  },
+  {
+    "id_product": 586,
+    "product_name": "Display",
+    "price": 12000,
+    "description": "A monitor is a device for quick visual communication of a user with a control device and display of data transmitted from a keyboard, mouse or central processor. ... A modern monitor consists of a screen (display), a power supply, control boards and a housing."
+  },
+  {
+    "id_product": 596,
+    "product_name": "PS5",
+    "price": 112000,
+    "description": "The PlayStation 5 is a member of the PlayStation family of game consoles and the successor to the PlayStation 4. The console was released on November 12, 2020 in Japan, USA, Canada, Mexico, Australia, New Zealand and South Korea, and on November 19, 2020 in other regions, respectively [1] ...The development was officially confirmed in October 2018 , while the first details appeared in April 2019. The name of the PlayStation 5 was officially announced only in October 2019 [10], before that the device was simply designated as."
+  },
+  {
+    "id_product": 616,
+    "product_name": "X-BOX",
+    "price": 129000,
+    "description": "Xbox is a game console designed and manufactured by Microsoft. First went on sale November 15, 2001. This is Microsoft's first independent appearance in the game console market after a joint project with SEGA to develop a version of the Windows CE operating system for the Dreamcast game console. Microsoft Xbox competed directly with Sony PlayStation 2 and Nintendo GameCube. The heir to the Xbox was the Xbox 360 and later the Xbox One."
+  },
+  {
+    "id_product": 666,
+    "product_name": "NintendoSwitch",
+    "price": 58000,
+    "description": "Nintendo Switch can work as a home game console - in this case, the main device of the console is inserted into a special docking station attached to the TV, and the TV screen is used as an output medium. Outside the docking station, Nintendo Switch uses its own LCD touch screen - the player can hold the console and interact with it like a tablet computer, or place it on a table in front of several players participating in the game, like a miniature TV."
+  },
+  {
+    "id_product": 786,
+    "product_name": "Macbook Air",
+    "price": 122000,
+    "description": "Macbook Air features a 13.3-inch display with a resolution of 1440 x 900 pixels, an Intel Core i5 processor, Intel HD Graphics 3000 GPU and a battery that provides 7 hours of continuous web surfing over Wi-Fi. The laptop lacks an optical drive and hard drive. ... The laptop can be left on."
+  },
+  {
+    "id_product": 986,
+    "product_name": "Printer",
+    "price": 6000,
+    "description": "A printer is an external peripheral device of a computer designed to display text or graphic information stored in a computer on a solid physical medium, usually paper or plastic film, in small runs (from units to hundreds). This differs from printing equipment and risography, which due to the printing form, it is faster and cheaper for large runs (hundreds or more copies)."
   }
 ]

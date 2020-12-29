@@ -7,8 +7,18 @@ Vue.component('cart', {
         }
     },
     computed: {
+        /**
+         * Итоговая сумма в корзине
+         */
         total() {
-            let result = this.cartItems.reduce((sum, item) => sum + (item.quantity * item.price), 0);
+            let result = {
+                sum: 0,
+                name: 0,
+                quantity: 0
+            };
+            result.sum = this.cartItems.reduce((sum, item) => sum + (item.quantity * item.price), 0);
+            result.name = this.cartItems.length;
+            result.quantity = this.cartItems.reduce((quantity, item) => quantity + item.quantity, 0);
             return result
         },
     },
@@ -64,9 +74,7 @@ Vue.component('cart', {
                     })
             }
         },
-        changeCurent(state) {
-            this.$parent.state = state
-        },
+
     },
     mounted() {
         this.$parent.getJson('/api/cart')
@@ -88,7 +96,7 @@ Vue.component('cart', {
                     :img="imgCart"
                     @remove="removeProduct">
                     </cart-item>
-                    <button class="buy-btn" type="button" @click="changeCurent('cartList')">Перейти в корзину</button>
+                    <button class="mini-btn-cart" type="button" @click="$root.changeCurentPage('cartList')">Перейти в корзину</button>
                 </div>
                 
             </div>
